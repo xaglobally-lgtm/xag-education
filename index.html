@@ -804,7 +804,7 @@ body.nav-open{overflow:hidden}
     <p class="page-sub" style="margin-bottom:1rem">What do you want to study?</p>
     <div class="opt-grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));max-width:720px">
       <button type="button" class="opt-btn opt-a tone-blue" data-name="General English lessons" data-price="0" data-mode="general" onclick="return selectStudyMode('general')">
-        <strong>General English lessons</strong>
+        <strong>General English lessons — tailored to you</strong>
         <div class="subs">
           <span>Customized to your needs</span>
           <span>Vocabulary · comprehension · skills</span>
@@ -1517,6 +1517,7 @@ body.nav-open{overflow:hidden}
     <div class="opt-grid wide">
       <button type="button" class="opt-btn opt-a tone-blue" onclick="showPdMode('online')"><span class="btn-icon" aria-hidden="true">💻</span><strong data-i18n="pd_online">Online courses</strong></button>
       <button type="button" class="opt-btn opt-c tone-orange" onclick="showPdMode('inperson')"><span class="btn-icon" aria-hidden="true">📍</span><strong data-i18n="pd_inperson">In-person courses</strong></button>
+      <button type="button" class="opt-btn opt-b tone-indigo" onclick="showPdMode('topics')"><span class="btn-icon" aria-hidden="true">🎯</span><strong>Focused topics</strong></button>
     </div>
   </div>
   <div class="step-panel" id="pd-step-online">
@@ -1526,6 +1527,11 @@ body.nav-open{overflow:hidden}
   <div class="step-panel" id="pd-step-inperson">
     <a href="#" class="page-back" onclick="backPdMode();return false;" data-i18n="back_pd">← Course type</a>
     <div class="course-grid" id="pdInpersonGrid"></div>
+  </div>
+  <div class="step-panel" id="pd-step-topics">
+    <a href="#" class="page-back" onclick="backPdMode();return false;" data-i18n="back_pd">← Course type</a>
+    <p class="page-sub" style="margin-bottom:1rem">Short, focused topics for teachers and school leaders — each a standalone purchase.</p>
+    <div class="course-grid" id="pdTopicsGrid"></div>
   </div>
   </div>
 
@@ -2397,7 +2403,11 @@ var FUSION_COURSES = {
     { id: 'sp-tok', name: 'IB TOK — The next level: Mastering TOK!', desc: 'Grades 9–11 only · 10 lessons only. Master Theory of Knowledge skills and language.', icon: '🧠', color: '#7c3aed', mode: 'specific', lessons: 10, grades: '9–11' },
     { id: 'sp-write-nf', name: "Primary writer's workshop: Non-fiction", desc: 'Grades 4–6 only · 10 lessons only. Master sentences, paragraphs and vocabulary in non-fiction writing.', icon: '📝', color: '#c2410c', mode: 'specific', lessons: 10, grades: '4–6' },
     { id: 'sp-write-f', name: "Primary writer's workshop: Fiction", desc: 'Grades 4–6 only · 10 lessons only. Master sentences, paragraphs and vocabulary in fiction writing.', icon: '📖', color: '#b45309', mode: 'specific', lessons: 10, grades: '4–6' },
-    { id: 'sp-early', name: 'Early learners start!', desc: 'Grades 1–6 only. Phonics program, flashcards, and language patterns for super growth in childhood.', icon: '🌟', color: '#0369a1', mode: 'specific', lessons: null, grades: '1–6' }
+    { id: 'sp-early', name: 'Early learners start!', desc: 'Grades 1–6 only. Phonics program, flashcards, and language patterns for super growth in childhood.', icon: '🌟', color: '#0369a1', mode: 'specific', lessons: null, grades: '1–6' },
+    { id: 'sp-ib-tok-1112', name: 'TOK for IB students', desc: 'Grades 11–12 only · 10 lessons. Theory of Knowledge — building the language and argument skills the IB TOK essay and exhibition require.', icon: '🧠', color: '#7c3aed', mode: 'specific', lessons: 10, grades: '11–12' },
+    { id: 'sp-ib-psych-1112', name: 'Psychology for IB students', desc: 'Grades 11–12 only · 10 lessons. Academic English and terminology for IB Psychology — research methods, studies, and exam-style writing.', icon: '🧩', color: '#0f766e', mode: 'specific', lessons: 10, grades: '11–12' },
+    { id: 'sp-ib-langlit-1112', name: 'Language and Literature for IB students', desc: 'Grades 11–12 only · 10 lessons. Close reading, literary analysis and the written/spoken skills IB Language and Literature assesses.', icon: '📚', color: '#b45309', mode: 'specific', lessons: 10, grades: '11–12' },
+    { id: 'sp-fallacies-pro', name: 'Fallacies for professional communication', desc: 'For professionals and older students · 8 lessons. Spot and avoid logical fallacies to communicate more persuasively and clearly at work.', icon: '⚖️', color: '#c2410c', mode: 'specific', lessons: 8, grades: 'Adults' }
   ]
 };
 
@@ -2454,6 +2464,22 @@ var FUSION_SCHEDULES = {
     { id: 'sel-mon-1400', day: 1, hour: 14, min: 0, dur: 45, seats: 8, open: true },
     { id: 'sel-thu-1400', day: 4, hour: 14, min: 0, dur: 45, seats: 8, open: true },
     { id: 'sel-sat-0900', day: 6, hour: 9, min: 0, dur: 45, seats: 8, open: true }
+  ],
+  'sp-ib-tok-1112': [
+    { id: 'itk-tue-1900', day: 2, hour: 19, min: 0, dur: 45, seats: 8, open: true },
+    { id: 'itk-thu-1900', day: 4, hour: 19, min: 0, dur: 45, seats: 8, open: true }
+  ],
+  'sp-ib-psych-1112': [
+    { id: 'ips-mon-1930', day: 1, hour: 19, min: 30, dur: 45, seats: 8, open: true },
+    { id: 'ips-wed-1930', day: 3, hour: 19, min: 30, dur: 45, seats: 8, open: true }
+  ],
+  'sp-ib-langlit-1112': [
+    { id: 'ill-tue-1800', day: 2, hour: 18, min: 0, dur: 45, seats: 8, open: true },
+    { id: 'ill-thu-1800', day: 4, hour: 18, min: 0, dur: 45, seats: 8, open: true }
+  ],
+  'sp-fallacies-pro': [
+    { id: 'sfp-sat-1000', day: 6, hour: 10, min: 0, dur: 45, seats: 10, open: true },
+    { id: 'sfp-sun-1000', day: 0, hour: 10, min: 0, dur: 45, seats: 10, open: true }
   ]
 };
 var DAY_NAMES = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
@@ -4668,6 +4694,16 @@ const PD_INPERSON = [
   { id: 'pd-workshop', name: 'Workshops & school visits', desc: 'Facilitated workshops on campus or at a regional hub — tailored to your team\u2019s priorities, with take-home resources for every participant.', img: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=640&h=400&fit=crop&auto=format', meta: 'In-person · workshop · 1 day' },
   { id: 'pd-onsite', name: 'On-site programmes', desc: 'Embedded professional development at your school over days or weeks, combining classroom observation, coaching cycles and staff workshops.', img: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=640&h=400&fit=crop&auto=format', meta: 'In-person · on-site · multi-day' }
 ];
+const PD_TOPICS = [
+  { id: 'pd-teens', name: 'Approaching teenagers', desc: 'Practical strategies for building trust, setting boundaries and getting genuine engagement from teenage students.', img: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=640&h=400&fit=crop&auto=format', meta: 'Focused topic · 1 session' },
+  { id: 'pd-ib-continuum', name: 'Layers of learning: how thinking unfolds through the IB continuum', desc: 'How cognitive and conceptual development builds from PYP through MYP to DP, and what that means for planning and instruction.', img: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=640&h=400&fit=crop&auto=format', meta: 'Focused topic · 1 session' },
+  { id: 'pd-parents', name: 'Communicating with parents and stakeholders', desc: 'Framing difficult conversations, managing expectations and building trust with parents and school stakeholders.', img: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=640&h=400&fit=crop&auto=format', meta: 'Focused topic · 1 session' },
+  { id: 'pd-deportment', name: 'Deportment: professional dress and conduct for high quality work', desc: 'Professional presentation, conduct and demeanour that support credibility and high-quality classroom and school-wide work.', img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=640&h=400&fit=crop&auto=format', meta: 'Focused topic · 1 session' },
+  { id: 'pd-ai-education', name: 'Using AI in education', desc: 'Practical, responsible ways teachers can use AI tools for planning, feedback and differentiation without losing professional judgement.', img: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=640&h=400&fit=crop&auto=format', meta: 'Focused topic · 1 session' },
+  { id: 'pd-boys', name: 'Working with boys in the classroom', desc: 'Evidence-based approaches to engagement, motivation and behaviour that respond to how boys typically experience the classroom.', img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=640&h=400&fit=crop&auto=format', meta: 'Focused topic · 1 session' },
+  { id: 'pd-management', name: 'For Management: getting ahead of the curve', desc: 'Forward-looking strategic thinking for school leaders — anticipating change rather than reacting to it.', img: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=640&h=400&fit=crop&auto=format', meta: 'Focused topic · leaders' },
+  { id: 'pd-brain-mind', name: 'Structuring and ordering the brain-mind connection', desc: 'How neuroscience-informed structure and sequencing in lessons supports how students actually think and learn.', img: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=640&h=400&fit=crop&auto=format', meta: 'Focused topic · 1 session' }
+];
 function renderProductCards(containerId, list) {
   var box = document.getElementById(containerId);
   if (!box) return;
@@ -4691,6 +4727,7 @@ function renderDigitalCourses() { renderProductCards('digitalCourseGrid', DIGITA
 function renderPdCourses() {
   renderProductCards('pdOnlineGrid', PD_ONLINE);
   renderProductCards('pdInpersonGrid', PD_INPERSON);
+  renderProductCards('pdTopicsGrid', PD_TOPICS);
 }
 
 /* ---- Teacher session gate ---- */
@@ -5287,11 +5324,15 @@ function showPdMode(mode) {
   document.getElementById('pd-step-mode').classList.remove('active');
   document.getElementById('pd-step-online').classList.toggle('active', mode === 'online');
   document.getElementById('pd-step-inperson').classList.toggle('active', mode === 'inperson');
+  var topicsPanel = document.getElementById('pd-step-topics');
+  if (topicsPanel) topicsPanel.classList.toggle('active', mode === 'topics');
   window.scrollTo(0, 0);
 }
 function backPdMode() {
   document.getElementById('pd-step-online').classList.remove('active');
   document.getElementById('pd-step-inperson').classList.remove('active');
+  var topicsPanel = document.getElementById('pd-step-topics');
+  if (topicsPanel) topicsPanel.classList.remove('active');
   document.getElementById('pd-step-mode').classList.add('active');
 }
 function openModal() { document.getElementById('authModal').classList.add('open'); }
@@ -5324,6 +5365,14 @@ const PRODUCTS = {
   "pd-cohort": { name: "Cohort learning path with certificate", price: 249, unit: "course", cat: "Professional Development" },
   "pd-workshop": { name: "Workshops & school visits", price: 800, unit: "day", cat: "Professional Development" },
   "pd-onsite": { name: "On-site staff programmes", price: 2500, unit: "programme", cat: "Professional Development" },
+  "pd-teens": { name: "Approaching teenagers", price: 59, unit: "session", cat: "Professional Development" },
+  "pd-ib-continuum": { name: "Layers of learning: IB continuum", price: 59, unit: "session", cat: "Professional Development" },
+  "pd-parents": { name: "Communicating with parents and stakeholders", price: 59, unit: "session", cat: "Professional Development" },
+  "pd-deportment": { name: "Deportment: professional dress and conduct", price: 59, unit: "session", cat: "Professional Development" },
+  "pd-ai-education": { name: "Using AI in education", price: 59, unit: "session", cat: "Professional Development" },
+  "pd-boys": { name: "Working with boys in the classroom", price: 59, unit: "session", cat: "Professional Development" },
+  "pd-management": { name: "For Management: getting ahead of the curve", price: 79, unit: "session", cat: "Professional Development" },
+  "pd-brain-mind": { name: "Structuring and ordering the brain-mind connection", price: 59, unit: "session", cat: "Professional Development" },
   "ds-watchdog-basic": { name: "WatchDog — Basic", price: 29, unit: "month", cat: "Digital Solutions" },
   "ds-watchdog-pro": { name: "WatchDog — Pro", price: 79, unit: "month", cat: "Digital Solutions" },
   "ds-watchdog-enterprise": { name: "WatchDog — Enterprise", price: 199, unit: "month", cat: "Digital Solutions" },
@@ -7729,6 +7778,7 @@ try { if (typeof updateMyClassButton === "function") updateMyClassButton(); } ca
   try { localiseArt(typeof DIGITAL_COURSES !== 'undefined' ? DIGITAL_COURSES : null); } catch (e) {}
   try { localiseArt(typeof PD_ONLINE !== 'undefined' ? PD_ONLINE : null); } catch (e) {}
   try { localiseArt(typeof PD_INPERSON !== 'undefined' ? PD_INPERSON : null); } catch (e) {}
+  try { localiseArt(typeof PD_TOPICS !== 'undefined' ? PD_TOPICS : null); } catch (e) {}
   try { localiseArt(typeof CONSULT_PACKAGES !== 'undefined' ? CONSULT_PACKAGES : null); } catch (e) {}
   try {
     if (typeof FUSION_COURSES !== 'undefined') {
