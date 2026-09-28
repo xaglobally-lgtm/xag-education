@@ -26,6 +26,10 @@ h1,h2,h3,h4{font-family:'Libre Baskerville',Georgia,serif;letter-spacing:-.02em;
 .header-mid{order:2;flex:0 1 auto;text-align:left;font-family:'Libre Baskerville',Georgia,serif;font-weight:700;font-size:clamp(.68rem,1.3vw,.82rem);color:#0b1c2d;letter-spacing:.01em;padding:0 .4rem 0 .1rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:min(360px,32vw)}
 .header-actions{display:flex;align-items:center;gap:.4rem;order:3;margin-left:auto;flex-shrink:0}
 .lang-bar{display:flex;align-items:center;gap:.22rem}
+.xag-trust-badge{display:inline-flex;align-items:center;gap:.3rem;padding:.28rem .6rem;border-radius:999px;text-decoration:none;font-family:'Manrope',sans-serif;font-weight:700;font-size:.68rem;color:#5a4300;background:linear-gradient(135deg,#fff6d8,#f0d888 35%,#d9ad3d 65%,#f7e7a8);border:1px solid #c99b2e;box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 2px 6px rgba(201,155,46,.35);white-space:nowrap;position:relative;overflow:hidden}
+.xag-trust-badge:hover{box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 3px 10px rgba(201,155,46,.5)}
+.xag-trust-badge-icon{font-size:.82rem;line-height:1}
+@media(max-width:640px){.xag-trust-badge-text{display:none}.xag-trust-badge{padding:.3rem .45rem}}
 .lang-flag{width:24px;height:16px;border-radius:2px;border:1.5px solid transparent;cursor:pointer;object-fit:cover}
 .lang-flag.active,.lang-flag:hover{border-color:#304adc}
 .lang-select{border:1.5px solid var(--border);border-radius:6px;padding:.2rem .3rem;font-size:.7rem;background:#fff;color:var(--navy);cursor:pointer;font-family:inherit}
@@ -652,6 +656,14 @@ body.nav-open{overflow:hidden}
 .xag-diagnostic-opts button{background:#fff;border:1.5px solid rgba(48,74,220,.35);color:#0b1c2d;border-radius:999px;padding:.5rem 1rem;font-size:.82rem;font-family:'Libre Baskerville',Georgia,serif;cursor:pointer}
 .xag-diagnostic-opts button:hover{border-color:#304adc;color:#304adc;background:rgba(48,74,220,.06)}
 .xag-trust-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.1rem;margin:1.1rem 0}
+.xag-medallion{display:flex;flex-direction:column;align-items:center;text-align:center;gap:.35rem;padding:1rem .6rem}
+.xag-medallion-ring{width:62px;height:62px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.55rem;border:3px solid #c9ccd1;background:#eceef1;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.xag-medallion.earned .xag-medallion-ring{border-color:#c99b2e;background:linear-gradient(135deg,#fff6d8,#f0d888 35%,#d9ad3d 75%,#f7e7a8);box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 3px 12px rgba(201,155,46,.45)}
+.xag-medallion h4{font-size:.85rem;margin:.15rem 0 0;font-family:'Manrope',sans-serif}
+.xag-medallion p{font-size:.76rem;opacity:.75;margin:0}
+.xag-verify-partners{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.8rem}
+.xag-verify-chip{display:inline-flex;align-items:center;gap:.4rem;padding:.4rem .8rem;border-radius:999px;background:#eceef1;border:1.5px solid #c9ccd1;font-size:.78rem;color:#3d4f63}
+.xag-verify-chip .dot{width:7px;height:7px;border-radius:50%;background:#9aa1ab;display:inline-block}
 .xag-trust-col h4{font-family:'Manrope',sans-serif;font-size:.95rem;margin-bottom:.3rem}
 .xag-trust-col p{font-size:.84rem;opacity:.85;line-height:1.5}
 .xag-authority{background:#0b1c2d;color:#fff;border-radius:16px;padding:1.5rem 1.4rem;margin:1.4rem 0}
@@ -688,6 +700,9 @@ body.nav-open{overflow:hidden}
       
     </a>
     <div class="header-actions">
+      <a href="#" class="xag-trust-badge" onclick="showPage('trust');return false;" title="XAG Trust &amp; Verification">
+        <span class="xag-trust-badge-icon">🛡️</span><span class="xag-trust-badge-text">Trust</span>
+      </a>
       <div class="lang-bar">
         <img class="lang-flag active" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2060%2030%22%3E%3CclipPath%20id%3D%22c%22%3E%3Cpath%20d%3D%22M0%200v30h60V0z%22%2F%3E%3C%2FclipPath%3E%3Cpath%20d%3D%22M0%200v30h60V0z%22%20fill%3D%22%23012169%22%2F%3E%3Cpath%20d%3D%22M0%200l60%2030m0-30L0%2030%22%20stroke%3D%22%23fff%22%20stroke-width%3D%226%22%20clip-path%3D%22url%28%23c%29%22%2F%3E%3Cpath%20d%3D%22M0%200l60%2030m0-30L0%2030%22%20stroke%3D%22%23C8102E%22%20stroke-width%3D%224%22%20clip-path%3D%22url%28%23c%29%22%2F%3E%3Cpath%20d%3D%22M30%200v30M0%2015h60%22%20stroke%3D%22%23fff%22%20stroke-width%3D%2210%22%2F%3E%3Cpath%20d%3D%22M30%200v30M0%2015h60%22%20stroke%3D%22%23C8102E%22%20stroke-width%3D%226%22%2F%3E%3C%2Fsvg%3E" alt="EN" data-lang="en" onclick="setLang('en')">
         <img class="lang-flag" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2060%2040%22%3E%3Crect%20width%3D%2260%22%20height%3D%2240%22%20fill%3D%22%23DE2910%22%2F%3E%3Cg%20transform%3D%22translate%2810%2C10%29%20scale%286%29%22%3E%3Cpath%20d%3D%22M0%20-1%20.225%20-.309%20.951%20-.309%20.364%20.118%20.588%20.809%200%20.382%20-.588%20.809%20-.364%20.118%20-.951%20-.309%20-.225%20-.309z%22%20fill%3D%22%23FFDE00%22%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%22translate%2820%2C4%29%20scale%282%29%22%3E%3Cpath%20d%3D%22M0%20-1%20.225%20-.309%20.951%20-.309%20.364%20.118%20.588%20.809%200%20.382%20-.588%20.809%20-.364%20.118%20-.951%20-.309%20-.225%20-.309z%22%20fill%3D%22%23FFDE00%22%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%22translate%2825%2C10%29%20scale%282%29%22%3E%3Cpath%20d%3D%22M0%20-1%20.225%20-.309%20.951%20-.309%20.364%20.118%20.588%20.809%200%20.382%20-.588%20.809%20-.364%20.118%20-.951%20-.309%20-.225%20-.309z%22%20fill%3D%22%23FFDE00%22%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%22translate%2825%2C17%29%20scale%282%29%22%3E%3Cpath%20d%3D%22M0%20-1%20.225%20-.309%20.951%20-.309%20.364%20.118%20.588%20.809%200%20.382%20-.588%20.809%20-.364%20.118%20-.951%20-.309%20-.225%20-.309z%22%20fill%3D%22%23FFDE00%22%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%22translate%2820%2C22%29%20scale%282%29%22%3E%3Cpath%20d%3D%22M0%20-1%20.225%20-.309%20.951%20-.309%20.364%20.118%20.588%20.809%200%20.382%20-.588%20.809%20-.364%20.118%20-.951%20-.309%20-.225%20-.309z%22%20fill%3D%22%23FFDE00%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="中文" data-lang="zh" onclick="setLang('zh')">
@@ -1891,6 +1906,9 @@ body.nav-open{overflow:hidden}
   <div id="trustIntegrityBody"></div>
   <h2>📋 Verification history</h2>
   <div id="trustHistoryBody"></div>
+  <h2>🎯 Verification we're pursuing</h2>
+  <p style="font-size:.85rem;opacity:.8">Real, named checks XAG intends to run once this app is deployed to production — each one turns into a medallion above the moment it is genuinely earned, never before.</p>
+  <div class="xag-verify-partners" id="trustPartnersRow"></div>
   <p style="font-size:.78rem;opacity:.6;margin-top:1.5rem">XAG only displays a status once it has actually been earned from the named provider. Where a check has not yet been performed, this page says so plainly rather than implying a claim that hasn't been established.</p>
 </div>
 
@@ -4373,16 +4391,21 @@ function _xagEsc(s) {
     .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
+function _xagMedallion(icon, label, earned, statusText) {
+  return '<div class="xag-medallion ' + (earned ? 'earned' : 'pending') + '">' +
+    '<div class="xag-medallion-ring"><span class="xag-medallion-icon">' + icon + '</span></div>' +
+    '<h4>' + _xagEsc(label) + '</h4><p>' + _xagEsc(statusText) + '</p></div>';
+}
 function renderTrustPassport() {
   var c = XAG_TRUST_CONFIG;
   var row = document.getElementById('trustStatusRow');
   if (row) {
     row.innerHTML =
-      '<div class="xag-trust-col">' + _xagTrustDot(c.security.status !== 'not_yet_verified') + ' <h4 style="display:inline">Security</h4><p>' + (c.security.status === 'not_yet_verified' ? 'Not yet verified' : c.security.status) + '</p></div>' +
-      '<div class="xag-trust-col">' + _xagTrustDot(c.accessibility.status === 'conformant') + ' <h4 style="display:inline">Accessibility</h4><p>' + (c.accessibility.status === 'not_yet_evaluated' ? 'Not yet evaluated' : c.accessibility.status) + '</p></div>' +
-      '<div class="xag-trust-col">' + _xagTrustDot(c.privacy.status === 'available') + ' <h4 style="display:inline">Privacy</h4><p>' + (c.privacy.status === 'available' ? 'Information available' : 'Not yet available') + '</p></div>' +
-      '<div class="xag-trust-col">' + _xagTrustDot(c.domain.status !== 'not_yet_verified') + ' <h4 style="display:inline">Domain</h4><p>' + (c.domain.status === 'not_yet_verified' ? 'Not yet verified' : c.domain.status) + '</p></div>' +
-      '<div class="xag-trust-col">' + _xagTrustDot(c.integrity.status !== 'not_yet_verified') + ' <h4 style="display:inline">Integrity</h4><p>' + (c.integrity.status === 'not_yet_verified' ? 'Not yet verified' : c.integrity.status) + '</p></div>';
+      _xagMedallion('🛡️', 'Security', c.security.status !== 'not_yet_verified', c.security.status === 'not_yet_verified' ? 'Not yet verified' : c.security.status) +
+      _xagMedallion('♿', 'Accessibility', c.accessibility.status === 'conformant', c.accessibility.status === 'not_yet_evaluated' ? 'Not yet evaluated' : c.accessibility.status) +
+      _xagMedallion('🔐', 'Privacy', c.privacy.status === 'available', c.privacy.status === 'available' ? 'Information available' : 'Not yet available') +
+      _xagMedallion('✓', 'Domain', c.domain.status !== 'not_yet_verified', c.domain.status === 'not_yet_verified' ? 'Not yet verified' : c.domain.status) +
+      _xagMedallion('🔏', 'Integrity', c.integrity.status !== 'not_yet_verified', c.integrity.status === 'not_yet_verified' ? 'Not yet verified' : c.integrity.status);
   }
   var sec = document.getElementById('trustSecurityBody');
   if (sec) sec.innerHTML =
@@ -4412,6 +4435,18 @@ function renderTrustPassport() {
   if (hist) hist.innerHTML = (c.history && c.history.length)
     ? c.history.map(function (h) { return '<p>' + _xagEsc(h.date) + ' — ' + _xagEsc(h.label) + '</p>'; }).join('')
     : '<p style="opacity:.7">No verification checks recorded yet.</p>';
+  var partnersRow = document.getElementById('trustPartnersRow');
+  if (partnersRow) {
+    var partners = [
+      'xlogs — domain &amp; badge verification',
+      'LaunchGuard — security health scan',
+      'W3C WCAG 2.2 AA — accessibility conformance',
+      'Let’s Seal — artifact integrity sealing'
+    ];
+    partnersRow.innerHTML = partners.map(function (p) {
+      return '<span class="xag-verify-chip"><span class="dot"></span>' + p + ' — <em>not yet verified</em></span>';
+    }).join('');
+  }
   var badges = document.getElementById('trustFooterBadges');
   if (badges) {
     var chips = [];
